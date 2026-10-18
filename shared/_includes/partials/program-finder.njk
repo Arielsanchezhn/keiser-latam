@@ -1,0 +1,39 @@
+{#- Buscador regional de programas. Espera: locale, s.
+    Sin JavaScript se ve el catálogo completo; program-finder.js agrega el
+    filtro por nivel. -#}
+{%- from "macros.njk" import pin -%}
+{%- set total = programs.items.length -%}
+<div data-program-finder>
+  <div class="finder-filters" role="group" aria-label="{{ s.filterLabel }}">
+    <button type="button" class="pill" data-filter="all" aria-pressed="true">{{ s.filterAll }} ({{ total }})</button>
+    {%- for level in programs.levels %}
+    {%- set n = (programs.items | whereEq('level', level.id)).length %}
+    <button type="button" class="pill" data-filter="{{ level.id }}" aria-pressed="false">{{ level.label | t(locale) }} ({{ n }})</button>
+    {%- endfor %}
+  </div>
+  <p class="finder-count" aria-live="polite" data-count data-one="{{ s.programOne }}" data-many="{{ s.programMany }}">{{ total }} {{ s.programMany }}</p>
+
+  <ul class="finder-list">
+    {%- for p in programs.items %}
+    {%- set level = programs.levels | byId(p.level) %}
+    <li class="finder-item" data-level="{{ p.level }}">
+      <div class="finder-item__top">
+        <span class="finder-item__level">{{ level.singular | t(locale) }}</span>
+        <span class="finder-item__name">{{ p.name | t(locale) }}</span>
+      </div>
+      <div class="finder-item__where">
+        {%- for locId in p.offeredAt %}
+        {%- set loc = network.locations | byId(locId) %}
+        <a class="chip" href="{{ loc.programsUrl | t(locale) }}">{{ pin() | safe }} {{ loc.city }}</a>
+        {%- endfor %}
+        {%- if p.offeredIn %}
+        {%- set c = network.countries | byId(p.offeredIn) %}
+        <a class="chip" href="{{ p.url | t(locale) }}">{{ pin() | safe }} {{ c.name | t(locale) }}</a>
+        {%- endif %}
+        {%- if p.online %}<span class="chip chip--outline">{{ s.alsoOnline }}</span>{% endif %}
+      </div>
+    </li>
+    {%- endfor %}
+  </ul>
+  <p class="finder-note">{{ accreditation.continuingEducationNote | t(locale) }}</p>
+</div>

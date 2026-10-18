@@ -1,0 +1,15 @@
+{
+  "_comment": "Configuración del portal regional. 'origin' vacío = usa la URL que Netlify asigna al deploy. Al definir el dominio del portal, escribirlo aquí (sin barra final). 'indexable': false mantiene el portal fuera de buscadores (meta noindex + robots.txt Disallow) mientras sea borrador; cambiar a true al lanzar.",
+  "name": { "es": "Keiser University América Latina", "en": "Keiser University Latin America" },
+  "origin": "",
+  "indexable": false,
+  "locales": ["es", "en"],
+  "defaultLocale": "es",
+  "htmlLang": { "es": "es", "en": "en" },
+  "ogLocale": { "es": "es_LA", "en": "en_US" },
+  "ogImage": "/assets/img/og-portal.jpg",
+  "tracking": {
+    "_comment": "Vacío por ahora. Cuando el portal tenga GTM o píxeles propios, agregarlos aquí; el layout los inserta solo si existen.",
+    "gtm": ""
+  }
+}

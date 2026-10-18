@@ -1,0 +1,18 @@
+{
+  "name": "keiser-latam",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Hub regional de sitios de Keiser University en Centroamérica (portal, El Salvador, Nicaragua, Honduras).",
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve",
+    "build:portal": "SITE=portal eleventy",
+    "start:portal": "SITE=portal eleventy --serve"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "_comment": "Declaración de acreditación. ÚNICA fuente para todos los sitios del hub: SACSCOC (Principio 14.1) exige que sea idéntica en todas las publicaciones. Formato según la política de SACSCOC: nombre completo, niveles de título, y datos de contacto de SACSCOC en sitios web. No describir a SACSCOC como acreditador 'regional' (dejó de serlo el 1-jul-2020). ACBSP cubre solo programas específicos (ver keiseruniversity.edu/accreditation): nunca afirmar 'los programas de negocios' en general. Pendiente: confirmar el texto oficial en español con la Oficina de Acreditación de Keiser. Ver claude/revision-sacscoc-portal.md en el proyecto.",
+
+  "statement": {
+    "es": "Keiser University está acreditada por la Southern Association of Colleges and Schools Commission on Colleges (SACSCOC) para otorgar títulos de asociado, licenciatura, maestría, especialista en educación y doctorado. Keiser University también puede ofrecer credenciales como certificados y diplomas en los niveles de grado aprobados. Las consultas sobre la acreditación de Keiser University pueden dirigirse por escrito a la Southern Association of Colleges and Schools Commission on Colleges, 1866 Southern Lane, Decatur, GA 30033-4097, al teléfono (404) 679-4500 o mediante la información disponible en el sitio web de SACSCOC (www.sacscoc.org).",
+    "en": "Keiser University is accredited by the Southern Association of Colleges and Schools Commission on Colleges (SACSCOC) to award associate, baccalaureate, master’s, educational specialist, and doctoral degrees. Keiser University also may offer credentials such as certificates and diplomas at approved degree levels. Questions about the accreditation of Keiser University may be directed in writing to the Southern Association of Colleges and Schools Commission on Colleges at 1866 Southern Lane, Decatur, GA 30033-4097, by calling (404) 679-4500, or by using information available on SACSCOC’s website (www.sacscoc.org)."
+  },
+
+  "shortStatement": {
+    "es": "Keiser University está acreditada institucionalmente por la Southern Association of Colleges and Schools Commission on Colleges (SACSCOC).",
+    "en": "Keiser University is institutionally accredited by the Southern Association of Colleges and Schools Commission on Colleges (SACSCOC)."
+  },
+
+  "acbsp": {
+    "es": "Programas específicos de negocios de Keiser University cuentan además con acreditación ACBSP. Consulta cuáles en la página de acreditación.",
+    "en": "Specific Keiser University business programs also hold ACBSP accreditation. See which ones on the accreditation page."
+  },
+
+  "continuingEducationNote": {
+    "es": "Los diplomados y el Language Institute son programas de educación continua y no conducen a un título académico.",
+    "en": "Diplomas and the Language Institute are continuing-education programs and do not lead to an academic degree."
+  },
+
+  "linkLabel": { "es": "Acreditación de Keiser University", "en": "Keiser University accreditation" },
+  "url": "https://www.keiseruniversity.edu/accreditation/"
+}

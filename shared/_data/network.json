@@ -1,0 +1,151 @@
+{
+  "_comment": "Red de Keiser University en Centroamérica. Fuente única de países, ubicaciones, direcciones y teléfonos para todos los sitios del hub. Tipos de ubicación confirmados por Ariel Sánchez el 18-oct-2026: San Marcos y Managua son campus; San Salvador es sede académica (aulas y clases, no campus completo); Tegucigalpa es solo oficina de admisiones. Las URL de Nicaragua apuntan al staging de Netlify mientras se termina el sitio: cambiar a keiseruniversity.edu.ni al lanzar.",
+
+  "organization": {
+    "name": "Keiser University",
+    "foundingYear": 1977,
+    "parentUrl": "https://www.keiseruniversity.edu",
+    "accreditationUrl": "https://www.keiseruniversity.edu/accreditation/"
+  },
+
+  "locationTypes": {
+    "campus": { "es": "Campus", "en": "Campus" },
+    "site": { "es": "Sede académica", "en": "Academic site" },
+    "office": { "es": "Oficina de admisiones", "en": "Admissions office" }
+  },
+
+  "countries": [
+    {
+      "id": "sv",
+      "order": 1,
+      "name": { "es": "El Salvador", "en": "El Salvador" },
+      "presence": "academic",
+      "domain": "keiseruniversity.edu.sv",
+      "siteStatus": "live",
+      "url": { "es": "https://keiseruniversity.edu.sv/", "en": "https://keiseruniversity.edu.sv/en/" },
+      "summary": { "es": "Sede académica", "en": "Academic site" },
+      "locations": ["san-salvador"]
+    },
+    {
+      "id": "ni",
+      "order": 2,
+      "name": { "es": "Nicaragua", "en": "Nicaragua" },
+      "presence": "academic",
+      "domain": "keiseruniversity.edu.ni",
+      "siteStatus": "staging",
+      "url": { "es": "https://ku-nicaragua-ng.netlify.app/", "en": "https://ku-nicaragua-ng.netlify.app/" },
+      "compareUrl": { "es": "https://ku-nicaragua-ng.netlify.app/campuses.html", "en": "https://ku-nicaragua-ng.netlify.app/campuses.html" },
+      "summary": { "es": "2 campus", "en": "2 campuses" },
+      "locations": ["san-marcos", "managua"]
+    },
+    {
+      "id": "hn",
+      "order": 3,
+      "name": { "es": "Honduras", "en": "Honduras" },
+      "presence": "office",
+      "domain": "keiseruniversity.edu.hn",
+      "siteStatus": "none",
+      "summary": { "es": "Oficina de admisiones", "en": "Admissions office" },
+      "domainNote": { "es": "sitio en desarrollo", "en": "site in development" },
+      "locations": ["tegucigalpa"]
+    }
+  ],
+
+  "locations": [
+    {
+      "id": "san-salvador",
+      "country": "sv",
+      "type": "site",
+      "city": "San Salvador",
+      "kind": { "es": "Sede académica de posgrado", "en": "Graduate academic site" },
+      "description": {
+        "es": "MBA, posgrados y diplomados de educación continua para profesionales, en español e inglés.",
+        "en": "MBA, graduate programs and continuing-education diplomas for professionals, in Spanish and English."
+      },
+      "shortDescription": { "es": "Posgrado y diplomados · Torre Millennium", "en": "Graduate programs and diplomas · Torre Millennium" },
+      "address": {
+        "es": "Millennium Plaza, 2.º nivel · Paseo General Escalón, San Salvador",
+        "en": "Millennium Plaza, 2nd floor · Paseo General Escalón, San Salvador"
+      },
+      "phone": "+503 2250-3050",
+      "phoneHref": "+50322503050",
+      "url": { "es": "https://keiseruniversity.edu.sv/", "en": "https://keiseruniversity.edu.sv/en/" },
+      "programsUrl": { "es": "https://keiseruniversity.edu.sv/programas/", "en": "https://keiseruniversity.edu.sv/en/programas/" },
+      "cta": { "es": "Ir a la sede San Salvador", "en": "Go to San Salvador site" },
+      "image": "/assets/img/locations/san-salvador.jpg",
+      "imageAlt": { "es": "Torre Millennium, San Salvador", "en": "Torre Millennium, San Salvador" },
+      "imagePosition": "center",
+      "geo": { "latitude": 13.701171, "longitude": -89.228444 }
+    },
+    {
+      "id": "san-marcos",
+      "country": "ni",
+      "type": "campus",
+      "city": "San Marcos",
+      "kind": { "es": "Latin American Campus · Carazo", "en": "Latin American Campus · Carazo" },
+      "description": {
+        "es": "Licenciaturas impartidas en inglés, con residencias estudiantiles, deportes y vida de campus.",
+        "en": "Bachelor’s degrees taught in English, with student residences, athletics and campus life."
+      },
+      "shortDescription": { "es": "Pregrado en inglés · Carazo", "en": "Undergraduate in English · Carazo" },
+      "address": { "es": "San Marcos, Carazo", "en": "San Marcos, Carazo" },
+      "phone": "(505) 2535-2314",
+      "phoneHref": "+50525352314",
+      "url": { "es": "https://ku-nicaragua-ng.netlify.app/san-marcos.html", "en": "https://ku-nicaragua-ng.netlify.app/san-marcos.html" },
+      "programsUrl": { "es": "https://ku-nicaragua-ng.netlify.app/san-marcos.html", "en": "https://ku-nicaragua-ng.netlify.app/san-marcos.html" },
+      "cta": { "es": "Ir al campus San Marcos", "en": "Go to San Marcos campus" },
+      "image": "/assets/img/locations/san-marcos.jpg",
+      "imageAlt": { "es": "Estudiante frente al campus San Marcos", "en": "Student in front of the San Marcos campus" },
+      "imagePosition": "center 30%"
+    },
+    {
+      "id": "managua",
+      "country": "ni",
+      "type": "campus",
+      "city": "Managua",
+      "kind": { "es": "Campus urbano", "en": "Urban campus" },
+      "description": {
+        "es": "Asociados, MBA, DBA, certificados de posgrado y diplomados, impartidos en español.",
+        "en": "Associate degrees, MBA, DBA, graduate certificates and diplomas, taught in Spanish."
+      },
+      "shortDescription": { "es": "Posgrado, diplomados y asociados en español", "en": "Graduate, diplomas and associate degrees in Spanish" },
+      "address": { "es": "Ofiplaza San Dionisio, Pista Suburbana, Managua", "en": "Ofiplaza San Dionisio, Pista Suburbana, Managua" },
+      "phone": "(505) 2278-6911",
+      "phoneHref": "+50522786911",
+      "url": { "es": "https://ku-nicaragua-ng.netlify.app/managua.html", "en": "https://ku-nicaragua-ng.netlify.app/managua.html" },
+      "programsUrl": { "es": "https://ku-nicaragua-ng.netlify.app/managua.html", "en": "https://ku-nicaragua-ng.netlify.app/managua.html" },
+      "cta": { "es": "Ir al campus Managua", "en": "Go to Managua campus" },
+      "image": "/assets/img/locations/managua.jpg",
+      "imageAlt": { "es": "Estudiante frente al campus Managua", "en": "Student in front of the Managua campus" },
+      "imagePosition": "20% center"
+    },
+    {
+      "id": "tegucigalpa",
+      "country": "hn",
+      "type": "office",
+      "city": "Tegucigalpa",
+      "kind": { "es": "Admisiones abiertas", "en": "Admissions open" },
+      "description": {
+        "es": "Nuestra oficina en Tegucigalpa te acompaña en todo el proceso para estudiar en los campus y sedes de Keiser:",
+        "en": "Our Tegucigalpa office supports you through the whole process to study at Keiser campuses and sites:"
+      },
+      "shortDescription": {
+        "es": "Desde Tegucigalpa te ayudamos a aplicar a los campus y sedes de Keiser:",
+        "en": "From Tegucigalpa, we help you apply to Keiser campuses and sites:"
+      },
+      "recruitsFor": [
+        { "level": { "es": "Pregrado", "en": "Undergraduate" }, "where": { "es": "En Nicaragua o en Florida", "en": "In Nicaragua or Florida" } },
+        { "level": { "es": "Posgrado", "en": "Graduate" }, "where": { "es": "Online, en Nicaragua, en El Salvador o en Florida", "en": "Online, in Nicaragua, El Salvador or Florida" } }
+      ],
+      "address": {
+        "es": "Honduras Business Center · Torre Atlas, nivel 15, Tegucigalpa",
+        "en": "Honduras Business Center · Torre Atlas, 15th floor, Tegucigalpa"
+      },
+      "addressShort": { "es": "Torre Atlas, nivel 15", "en": "Torre Atlas, 15th floor" },
+      "postalAddress": "Honduras Business Center, Torre Atlas, Nivel 15, 11101 Tegucigalpa, Francisco Morazán, Honduras",
+      "phone": "+504 8797-8767",
+      "phoneHref": "+50487978767",
+      "cta": { "es": "Llamar a admisiones", "en": "Call admissions" }
+    }
+  ]
+}

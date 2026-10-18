@@ -1,0 +1,32 @@
+{#- Pie de la red: contactos de cada país y declaración de acreditación.
+    Todo sale de shared/_data (network.json, accreditation.json). -#}
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div>
+        <img class="site-footer__logo" src="/assets/img/brand/ku-logo-white.svg" alt="Keiser University" width="118" height="56">
+        {%- if footerNote %}<p class="site-footer__muted">{{ footerNote }}</p>{% endif %}
+      </div>
+      {%- for country in network.countries %}
+      <div>
+        <h3>{{ country.name | t(locale) }}</h3>
+        {%- for locId in country.locations %}
+        {%- set loc = network.locations | byId(locId) %}
+        <p>{{ loc.city }} · <a href="tel:{{ loc.phoneHref }}">{{ loc.phone }}</a></p>
+        {%- if loc.type == 'office' %}<p>{{ loc.addressShort | t(locale) }}</p>{% endif %}
+        {%- endfor %}
+        {%- if country.url %}
+        <a class="site-footer__domain" href="{{ country.url | t(locale) }}">{{ country.domain }}</a>
+        {%- else %}
+        <p class="site-footer__domain--plain">{{ country.domain }}</p>
+        {%- endif %}
+      </div>
+      {%- endfor %}
+    </div>
+    <div class="site-footer__legal">
+      <p>{{ accreditation.statement | t(locale) }}</p>
+      <p>{{ accreditation.continuingEducationNote | t(locale) }} © {{ build.year }} Keiser University.</p>
+      <a href="{{ accreditation.url }}">{{ accreditation.linkLabel | t(locale) }}</a>
+    </div>
+  </div>
+</footer>

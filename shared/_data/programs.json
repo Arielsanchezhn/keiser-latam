@@ -1,0 +1,48 @@
+{
+  "_comment": "Catálogo regional. 'offeredAt' son ids de network.json → locations. Una combinación programa × sede solo debe figurar si está aprobada ante SACSCOC (pendiente de confirmar con la Oficina de Acreditación de Keiser). Programas en trámite: marcar 'pendingApproval': true para que el sitio muestre la leyenda exigida. Licenciaturas de San Marcos: nombre oficial en inglés también en la versión en español. 'continuingEducation': true = no conduce a título.",
+
+  "levels": [
+    { "id": "asociado", "label": { "es": "Asociados", "en": "Associate" }, "singular": { "es": "Asociado", "en": "Associate" } },
+    { "id": "pregrado", "label": { "es": "Pregrado", "en": "Undergraduate" }, "singular": { "es": "Pregrado", "en": "Undergraduate" } },
+    { "id": "posgrado", "label": { "es": "Posgrado", "en": "Graduate" }, "singular": { "es": "Posgrado", "en": "Graduate" } },
+    { "id": "diplomado", "label": { "es": "Diplomados", "en": "Diplomas" }, "singular": { "es": "Diplomado", "en": "Diploma" } },
+    { "id": "idiomas", "label": { "es": "Idiomas", "en": "Languages" }, "singular": { "es": "Idiomas", "en": "Languages" } }
+  ],
+
+  "items": [
+    { "level": "posgrado", "name": { "es": "Maestría en Administración de Empresas (MBA)", "en": "Master of Business Administration (MBA)" }, "offeredAt": ["san-salvador", "managua"], "online": true },
+    { "level": "posgrado", "name": { "es": "Doctor of Business Administration (DBA)", "en": "Doctor of Business Administration (DBA)" }, "offeredAt": ["managua"] },
+    { "level": "posgrado", "name": { "es": "Posgrado en Gerencia y Liderazgo", "en": "Graduate Program in Management and Leadership" }, "offeredAt": ["san-salvador", "managua"] },
+    { "level": "posgrado", "name": { "es": "Posgrado en Marketing Estratégico", "en": "Graduate Program in Strategic Marketing" }, "offeredAt": ["san-salvador", "managua"], "online": true },
+
+    { "level": "pregrado", "name": { "es": "Bachelor of Arts in Psychology", "en": "Bachelor of Arts in Psychology" }, "offeredAt": ["san-marcos", "managua"] },
+    { "level": "pregrado", "name": { "es": "Bachelor of Science in Integrated Marketing Communications", "en": "Bachelor of Science in Integrated Marketing Communications" }, "offeredAt": ["san-marcos", "managua"] },
+    { "level": "pregrado", "name": { "es": "Bachelor of Arts in Business Administration", "en": "Bachelor of Arts in Business Administration" }, "offeredAt": ["san-marcos"] },
+    { "level": "pregrado", "name": { "es": "Bachelor of Science in Artificial Intelligence", "en": "Bachelor of Science in Artificial Intelligence" }, "offeredAt": ["san-marcos"] },
+    { "level": "pregrado", "name": { "es": "Bachelor of Science in Software Engineering", "en": "Bachelor of Science in Software Engineering" }, "offeredAt": ["san-marcos"] },
+    { "level": "pregrado", "name": { "es": "Bachelor of Arts in Global Affairs and International Relations", "en": "Bachelor of Arts in Global Affairs and International Relations" }, "offeredAt": ["san-marcos"] },
+    { "level": "pregrado", "name": { "es": "Bachelor of Science in Management Information Systems", "en": "Bachelor of Science in Management Information Systems" }, "offeredAt": ["san-marcos"] },
+    { "level": "pregrado", "name": { "es": "Bachelor of Science in Interdisciplinary Studies", "en": "Bachelor of Science in Interdisciplinary Studies" }, "offeredAt": ["san-marcos"] },
+
+    { "level": "asociado", "name": { "es": "Associate of Arts in Business Administration", "en": "Associate of Arts in Business Administration" }, "offeredAt": ["managua"] },
+    { "level": "asociado", "name": { "es": "Associate of Science in Graphic Arts and Design", "en": "Associate of Science in Graphic Arts and Design" }, "offeredAt": ["managua"] },
+
+    { "level": "diplomado", "continuingEducation": true, "name": { "es": "Diplomado en Marketing Digital", "en": "Diploma in Digital Marketing" }, "offeredAt": ["san-salvador", "managua"] },
+    { "level": "diplomado", "continuingEducation": true, "name": { "es": "Diplomado en Gerencia de Proyectos", "en": "Diploma in Project Management" }, "offeredAt": ["san-salvador", "managua"] },
+    { "level": "diplomado", "continuingEducation": true, "name": { "es": "Diplomado en Inteligencia Artificial", "en": "Diploma in Artificial Intelligence" }, "offeredAt": ["san-salvador", "managua"] },
+    { "level": "diplomado", "continuingEducation": true, "name": { "es": "Diplomado en Gerencia de Recursos Humanos", "en": "Diploma in Human Resources Management" }, "offeredAt": ["san-salvador", "managua"] },
+    { "level": "diplomado", "continuingEducation": true, "name": { "es": "Diplomado en Finanzas Gerenciales", "en": "Diploma in Principles of Managerial Finance" }, "offeredAt": ["san-salvador", "managua"] },
+    { "level": "diplomado", "continuingEducation": true, "name": { "es": "Diplomado en Inteligencia de Negocios", "en": "Diploma in Principles of Business Intelligence" }, "offeredAt": ["san-salvador", "managua"] },
+    { "level": "diplomado", "continuingEducation": true, "name": { "es": "Diplomado en Administración y Gestión de Empresas", "en": "Diploma in Business Administration and Management" }, "offeredAt": ["san-salvador", "managua"] },
+    { "level": "diplomado", "continuingEducation": true, "name": { "es": "Diplomado en Estrategias de Negociación Efectiva", "en": "Diploma in Effective Negotiation Strategies" }, "offeredAt": ["san-salvador", "managua"] },
+    { "level": "diplomado", "continuingEducation": true, "name": { "es": "Diplomado en Gerencia y Estrategia de Ventas", "en": "Diploma in Sales Management and Strategy" }, "offeredAt": ["san-salvador", "managua"] },
+    { "level": "diplomado", "continuingEducation": true, "name": { "es": "Diplomado en Logística y Transporte", "en": "Diploma in Strategic Logistics and Transportation Management" }, "offeredAt": ["san-salvador", "managua"] },
+    { "level": "diplomado", "continuingEducation": true, "name": { "es": "Diplomado en Operaciones, Almacenes e Inventarios", "en": "Diploma in Operations, Warehouse and Inventory Management" }, "offeredAt": ["san-salvador", "managua"] },
+    { "level": "diplomado", "continuingEducation": true, "name": { "es": "Diplomado en Producción Audiovisual", "en": "Diploma in Audiovisual Production" }, "offeredAt": ["san-salvador", "managua"] },
+    { "level": "diplomado", "continuingEducation": true, "name": { "es": "Diplomado en Investigación de Mercados", "en": "Diploma in Market Research and Consumer Behavior" }, "offeredAt": ["san-salvador"] },
+    { "level": "diplomado", "continuingEducation": true, "name": { "es": "Diplomado en People Analytics", "en": "Diploma in People Analytics" }, "offeredAt": ["san-salvador"] },
+    { "level": "diplomado", "continuingEducation": true, "name": { "es": "Diplomado en Ciberseguridad Empresarial", "en": "Diploma in Enterprise Cybersecurity" }, "offeredAt": ["managua"] },
+
+    { "level": "idiomas", "continuingEducation": true, "name": { "es": "Language Institute — Inglés", "en": "Language Institute — English" }, "offeredIn": "ni", "url": { "es": "https://ku-nicaragua-ng.netlify.app/language-institute.html", "en": "https://ku-nicaragua-ng.netlify.app/language-institute.html" } }
+  ]
+}

@@ -1,0 +1,64 @@
+{#- Filas de país con sus campus, sedes u oficinas. Espera: locale, s. -#}
+{%- from "macros.njk" import arrow -%}
+{%- for country in network.countries %}
+<div class="country-row" id="{{ country.id }}">
+  <div class="country-row__head">
+    <p class="country-row__num">{{ country.order | pad2 }}</p>
+    <h3 class="country-row__name">{{ country.name | t(locale) }}</h3>
+    <p class="country-row__meta">{{ country.summary | t(locale) }}</p>
+    {%- if country.url %}
+    <a class="country-row__domain" href="{{ country.url | t(locale) }}">{{ country.domain }}</a>
+    {%- else %}
+    <p class="country-row__meta">{{ country.domain }}{% if country.domainNote %} · {{ country.domainNote | t(locale) }}{% endif %}</p>
+    {%- endif %}
+    {%- if country.compareUrl %}
+    <a class="country-row__compare" href="{{ country.compareUrl | t(locale) }}">{{ s.compareCampuses }} {{ arrow() | safe }}</a>
+    {%- endif %}
+  </div>
+  <div class="country-row__cards">
+    {%- for locId in country.locations %}
+    {%- set loc = network.locations | byId(locId) %}
+    {%- if loc.type == 'office' %}
+    <article class="loc-card loc-card--office">
+      <div class="loc-card__body">
+        <div>
+          <p class="loc-card__kind">{{ loc.kind | t(locale) }}</p>
+          <h4 class="loc-card__name">{{ loc.city }}</h4>
+        </div>
+        <p class="loc-card__desc">{{ loc.description | t(locale) }}</p>
+        <div class="recruit-grid">
+          {%- for r in loc.recruitsFor %}
+          <div class="recruit-grid__item">
+            <p class="recruit-grid__level">{{ r.level | t(locale) }}</p>
+            <p class="recruit-grid__where">{{ r.where | t(locale) }}</p>
+          </div>
+          {%- endfor %}
+        </div>
+        <ul class="loc-card__facts">
+          <li>{{ loc.address | t(locale) }}</li>
+          <li><a href="tel:{{ loc.phoneHref }}">{{ loc.phone }}</a></li>
+        </ul>
+      </div>
+      <a class="btn btn--primary" href="tel:{{ loc.phoneHref }}">{{ loc.cta | t(locale) }}</a>
+    </article>
+    {%- else %}
+    <article class="loc-card{% if country.locations.length == 1 %} loc-card--wide{% endif %}">
+      <img class="loc-card__img" src="{{ loc.image }}" alt="{{ loc.imageAlt | t(locale) }}" style="object-position: {{ loc.imagePosition }}" loading="lazy" width="1000" height="666">
+      <div class="loc-card__body">
+        <div>
+          <p class="loc-card__kind">{{ loc.kind | t(locale) }}</p>
+          <h4 class="loc-card__name">{{ loc.city }}</h4>
+        </div>
+        <p class="loc-card__desc">{{ loc.description | t(locale) }}</p>
+        <ul class="loc-card__facts">
+          <li>{{ loc.address | t(locale) }}</li>
+          <li><a href="tel:{{ loc.phoneHref }}">{{ loc.phone }}</a></li>
+        </ul>
+        <a class="btn btn--primary" href="{{ loc.url | t(locale) }}">{{ loc.cta | t(locale) }}</a>
+      </div>
+    </article>
+    {%- endif %}
+    {%- endfor %}
+  </div>
+</div>
+{%- endfor %}

@@ -1,0 +1,20 @@
+{#- Encabezado. Espera: locale, s (textos del sitio), pageSlug, navItems [{href, label}]. -#}
+<a class="skip-link" href="#main">{{ s.skip }}</a>
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="{{ '' | localePath(locale) }}" aria-label="{{ s.brandHome }}">
+      <img src="/assets/img/brand/ku-logo-white.svg" alt="Keiser University" width="110" height="52">
+      <span class="brand__region">{{ s.region }}</span>
+    </a>
+    <nav class="main-nav" aria-label="{{ s.navLabel }}">
+      {%- for item in navItems %}
+      <a class="main-nav__link" href="{{ item.href }}">{{ item.label }}</a>
+      {%- endfor %}
+      <div class="lang-switch" role="group" aria-label="{{ s.langLabel }}">
+        {%- for alt in siteConfig.locales %}
+        <a href="{{ pageSlug | localePath(alt) }}" lang="{{ siteConfig.htmlLang[alt] }}" hreflang="{{ siteConfig.htmlLang[alt] }}"{% if alt == locale %} aria-current="true"{% endif %} aria-label="{{ 'Español' if alt == 'es' else 'English' }}">{{ alt | upper }}</a>
+        {%- endfor %}
+      </div>
+    </nav>
+  </div>
+</header>

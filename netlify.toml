@@ -1,0 +1,26 @@
+# Un solo repositorio, varios sitios de Netlify.
+#
+# Cada sitio de Netlify (portal, El Salvador, Nicaragua, Honduras) se conecta
+# a este mismo repositorio y define UNA variable de entorno en su panel:
+#
+#   SITE = portal | sv | ni | hn
+#
+# El build compila solo ese sitio en _site/. Así, un cambio en una plantilla
+# compartida se publica en todos los sitios con un solo push.
+
+[build]
+  command = "npm run build"
+  publish = "_site"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"

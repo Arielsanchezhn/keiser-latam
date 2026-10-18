@@ -1,0 +1,14 @@
+---
+permalink: /robots.txt
+eleventyExcludeFromCollections: true
+---
+{%- if siteConfig.indexable -%}
+User-agent: *
+Allow: /
+
+Sitemap: {{ '/sitemap.xml' | absUrl(siteConfig.origin) }}
+{%- else -%}
+# Borrador: el portal todavía no se indexa (siteConfig.indexable = false).
+User-agent: *
+Disallow: /
+{%- endif %}

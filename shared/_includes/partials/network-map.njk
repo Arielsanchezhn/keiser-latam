@@ -1,0 +1,104 @@
+{#- Mapa interactivo de la red. Espera: locale, s, selectedCountry (id).
+    Sin JavaScript se ven todos los paneles; network-map.js los convierte en
+    pestañas controladas por el mapa y los botones. -#}
+{%- from "macros.njk" import arrow -%}
+{%- set selected = selectedCountry or 'ni' -%}
+<div class="map-layout" data-network-map data-selected="{{ selected }}">
+  <figure class="map-figure">
+    <svg viewBox="{{ mapGeo.viewBox }}" role="img" aria-label="{{ s.mapAria }}">
+      <g class="map-context" aria-hidden="true">
+        {%- for c in mapGeo.context %}
+        <path d="{{ c.d }}"/>
+        {%- endfor %}
+        {%- for c in mapGeo.context %}{% if c.label %}
+        <text x="{{ c.x }}" y="{{ c.y }}">{{ c.label | t(locale) }}</text>
+        {%- endif %}{% endfor %}
+      </g>
+      <g>
+        {%- for country in network.countries %}
+        {%- set geo = mapGeo.network[country.id] %}
+        <path class="map-country map-country--{{ country.presence }}{% if country.id == selected %} is-selected{% endif %}" data-country="{{ country.id }}" d="{{ geo.d }}"><title>{{ country.name | t(locale) }}</title></path>
+        {%- endfor %}
+      </g>
+      <g aria-hidden="true">
+        {%- for country in network.countries %}
+        {%- set geo = mapGeo.network[country.id] %}
+        <text class="map-country-label {% if not geo.labelInside %}map-country-label--outside{% elif country.presence == 'office' %}map-country-label--on-office{% else %}map-country-label--on-academic{% endif %}" x="{{ geo.labelX }}" y="{{ geo.labelY }}">{{ (country.name | t(locale)) | upper }}</text>
+        {%- endfor %}
+      </g>
+      <g aria-hidden="true">
+        {%- for loc in network.locations %}
+        {%- set m = mapGeo.markers[loc.id] %}
+        {%- if m %}
+        {%- if m.lineX %}<line class="map-leader" x1="{{ m.x }}" y1="{{ m.y }}" x2="{{ m.lineX }}" y2="{{ m.lineY }}"/>{% endif %}
+        {%- if loc.type == 'campus' %}
+        <circle class="map-marker" cx="{{ m.x }}" cy="{{ m.y }}" r="5"/>
+        {%- elif loc.type == 'site' %}
+        <rect class="map-marker" x="{{ m.x - 5 }}" y="{{ m.y - 5 }}" width="10" height="10" transform="rotate(45 {{ m.x }} {{ m.y }})"/>
+        {%- else %}
+        <rect class="map-marker" x="{{ m.x - 4.5 }}" y="{{ m.y - 4.5 }}" width="9" height="9" rx="1.5"/>
+        {%- endif %}
+        <text class="map-marker-label" x="{{ m.labelX }}" y="{{ m.labelY }}" text-anchor="{{ m.anchor }}">{{ loc.city }}</text>
+        {%- endif %}
+        {%- endfor %}
+      </g>
+      <g class="map-legend" aria-hidden="true">
+        <rect class="map-legend__box" x="490" y="28" width="206" height="80" rx="4"/>
+        <rect x="506" y="46" width="16" height="16" rx="2" fill="#1075DB"/>
+        <text x="532" y="59">{{ s.legendAcademic }}</text>
+        <rect x="506" y="76" width="16" height="16" rx="2" fill="#EBCF55"/>
+        <text x="532" y="89">{{ s.legendOffice }}</text>
+      </g>
+    </svg>
+  </figure>
+
+  <div class="map-side">
+    <div class="map-buttons" role="group" aria-label="{{ s.chooseCountry }}">
+      {%- for country in network.countries %}
+      <button type="button" class="pill" data-country="{{ country.id }}" aria-pressed="{{ 'true' if country.id == selected else 'false' }}" aria-controls="map-panel-{{ country.id }}">{{ country.name | t(locale) }}</button>
+      {%- endfor %}
+    </div>
+
+    {%- for country in network.countries %}
+    <section class="map-panel map-panel--{{ country.presence }}" id="map-panel-{{ country.id }}" data-panel="{{ country.id }}" aria-live="polite" aria-labelledby="map-panel-title-{{ country.id }}">
+      <div>
+        <p class="map-panel__status">{{ country.summary | t(locale) }}</p>
+        <h3 class="map-panel__name" id="map-panel-title-{{ country.id }}">{{ country.name | t(locale) }}</h3>
+        <p class="map-panel__domain">{{ country.domain }}{% if country.domainNote %} · {{ country.domainNote | t(locale) }}{% endif %}</p>
+      </div>
+      {%- if country.presence == 'academic' %}
+      <ul class="map-panel__list">
+        {%- for locId in country.locations %}
+        {%- set loc = network.locations | byId(locId) %}
+        <li>
+          <a class="map-panel__link" href="{{ loc.url | t(locale) }}">
+            <span>
+              <span class="map-panel__link-name">{{ loc.city }}</span>
+              <span class="map-panel__link-desc">{{ loc.shortDescription | t(locale) }}</span>
+            </span>
+            {{ arrow() | safe }}
+          </a>
+        </li>
+        {%- endfor %}
+      </ul>
+      {%- else %}
+      {%- for locId in country.locations %}
+      {%- set loc = network.locations | byId(locId) %}
+      <p>{{ loc.shortDescription | t(locale) }}</p>
+      <ul class="recruit-list">
+        {%- for r in loc.recruitsFor %}
+        <li><strong>{{ r.level | t(locale) }}:</strong> {{ r.where | t(locale) }}</li>
+        {%- endfor %}
+      </ul>
+      <div class="map-panel__office">
+        <strong>{{ loc.city }}</strong>
+        <span>{{ loc.address | t(locale) }}</span>
+        <a href="tel:{{ loc.phoneHref }}">{{ loc.phone }}</a>
+      </div>
+      <a class="btn btn--primary" href="#{{ country.id }}">{{ s.contactOffice }}</a>
+      {%- endfor %}
+      {%- endif %}
+    </section>
+    {%- endfor %}
+  </div>
+</div>

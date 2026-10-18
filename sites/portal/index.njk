@@ -1,0 +1,122 @@
+---
+pagination:
+  data: siteConfig.locales
+  size: 1
+  alias: locale
+permalink: "{{ '' | localePath(locale) }}"
+layout: layouts/base.njk
+pageSlug: ""
+scripts:
+  - /assets/js/hub.js
+eleventyComputed:
+  title: "{{ strings[locale].metaTitle }}"
+  description: "{{ strings[locale].metaDescription }}"
+---
+{%- from "macros.njk" import arrow -%}
+{%- set s = strings[locale] -%}
+{%- set navItems = [
+  { href: '#campus', label: s.navCampus },
+  { href: '#programas', label: s.navPrograms },
+  { href: '#por-que-keiser', label: s.navWhy }
+] -%}
+{%- include "partials/site-header.njk" %}
+
+<main id="main">
+
+<section class="hero" id="inicio">
+  <img class="hero__bg" src="/assets/img/hero-graduacion.jpg" alt="{{ s.heroAlt }}" width="1600" height="639" fetchpriority="high">
+  <div class="hero__shade"></div>
+  <div class="container hero__content">
+    <p class="hero__eyebrow">{{ s.heroEyebrow }}</p>
+    <h1 class="hero__title">{{ s.heroTitle }}</h1>
+    <p class="hero__text">{{ s.heroText }}</p>
+    <div class="hero__actions">
+      <a class="btn btn--accent" href="#campus">{{ s.ctaCampus }} {{ arrow() | safe }}</a>
+      <a class="btn btn--ghost-light" href="#programas">{{ s.ctaPrograms }}</a>
+    </div>
+  </div>
+  <nav class="quick-nav" aria-label="{{ s.goDirect }}">
+    <div class="container quick-nav__inner">
+      <p class="quick-nav__label">{{ s.goDirect }}</p>
+      {%- for country in network.countries %}
+      {%- for locId in country.locations %}
+      {%- set loc = network.locations | byId(locId) %}
+      {%- if loc.type == 'office' %}
+      <a class="quick-nav__item quick-nav__item--office" href="#{{ country.id }}">
+        <span class="quick-nav__country">{{ country.name | t(locale) }} · {{ s.admissionsShort }}</span>
+        <span class="quick-nav__city">{{ loc.city }}</span>
+      </a>
+      {%- else %}
+      <a class="quick-nav__item" href="{{ loc.url | t(locale) }}">
+        <span class="quick-nav__country">{{ country.name | t(locale) }}</span>
+        <span class="quick-nav__city">{{ loc.city }}</span>
+      </a>
+      {%- endif %}
+      {%- endfor %}
+      {%- endfor %}
+    </div>
+  </nav>
+</section>
+
+<section class="section" id="mapa" aria-labelledby="mapa-title">
+  <div class="container">
+    <p class="eyebrow">{{ s.mapEyebrow }}</p>
+    <h2 class="section-title" id="mapa-title">{{ s.mapTitle }}</h2>
+    <p class="section-lead">{{ s.mapText }}</p>
+    {%- set selectedCountry = 'ni' %}
+    {%- include "partials/network-map.njk" %}
+  </div>
+</section>
+
+<section class="section section--gray" id="campus" aria-labelledby="campus-title">
+  <div class="container">
+    <p class="eyebrow">{{ s.campEyebrow }}</p>
+    <h2 class="section-title" id="campus-title">{{ s.campTitle }}</h2>
+    <p class="section-lead">{{ s.campText }}</p>
+    {%- include "partials/network-locations.njk" %}
+  </div>
+</section>
+
+<section class="section" id="programas" aria-labelledby="programas-title">
+  <div class="container">
+    <div class="finder-head">
+      <div>
+        <p class="eyebrow">{{ s.progEyebrow }}</p>
+        <h2 class="section-title" id="programas-title">{{ s.progTitle }}</h2>
+        <p class="section-lead">{{ s.progText }}</p>
+      </div>
+    </div>
+    <p class="notice"><strong>{{ s.bannerStrong }}</strong> {{ s.bannerText }} {% set hn = network.locations | byId('tegucigalpa') %}<a href="tel:{{ hn.phoneHref }}">{{ hn.phone }}</a></p>
+    {%- include "partials/program-finder.njk" %}
+  </div>
+</section>
+
+<section class="why" id="por-que-keiser" aria-labelledby="why-title">
+  <div class="container">
+    <h2 class="why__title" id="why-title">{{ s.whyTitle }}</h2>
+    <div class="why__grid">
+      <div class="why__item">
+        <h3>{{ s.why1h }}</h3>
+        <p>{{ s.why1p }}</p>
+      </div>
+      <div class="why__item">
+        <h3>{{ s.why2h }}</h3>
+        <p>{{ accreditation.shortStatement | t(locale) }}</p>
+      </div>
+      <div class="why__item">
+        <h3>{{ s.why3h }}</h3>
+        <p>{{ accreditation.acbsp | t(locale) }}</p>
+        <a href="{{ accreditation.url }}">{{ accreditation.linkLabel | t(locale) }}</a>
+      </div>
+      <div class="why__item">
+        <h3>{{ s.why4h }}</h3>
+        <p>{{ s.why4p }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+{%- set footerNote = s.portalDomain %}
+{%- include "partials/network-footer.njk" %}
