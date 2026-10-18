@@ -77,6 +77,19 @@ module.exports = function (eleventyConfig) {
     return (list || []).filter((x) => x[key] === value);
   });
 
+  // URL de un asset con huella de su contenido (?v=…). Los assets se sirven
+  // con caché de un año (netlify.toml): sin la huella, el navegador seguiría
+  // usando el CSS/JS viejo después de un deploy.
+  const crypto = require("crypto");
+  eleventyConfig.addFilter("assetUrl", function (url) {
+    const rel = url.replace(/^\/assets\//, "");
+    const candidates = [path.join(SITE_DIR, "assets", rel), path.join("shared", "assets", rel)];
+    const file = candidates.find((f) => fs.existsSync(f));
+    if (!file) return url;
+    const hash = crypto.createHash("md5").update(fs.readFileSync(file)).digest("hex").slice(0, 10);
+    return `${url}?v=${hash}`;
+  });
+
   eleventyConfig.addFilter("pad2", function (n) {
     return String(n).padStart(2, "0");
   });
