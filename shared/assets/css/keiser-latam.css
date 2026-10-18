@@ -142,6 +142,21 @@ a:hover { color: var(--ku-teal-hover); }
 .quick-nav__country { font-size: 13px; color: var(--ku-blue-50); letter-spacing: 0.04em; }
 .quick-nav__city { font-family: var(--font-display); font-weight: 600; font-size: 22px; text-transform: uppercase; letter-spacing: 0.03em; }
 .quick-nav__item--office .quick-nav__city { color: var(--ku-yellow); }
+/* Celular: la etiqueta ocupa su propia fila y los accesos van en una
+   cuadrícula pareja de 2 columnas. Antes, con flex-wrap, "Ir directo a"
+   compartía fila con el primer acceso y los demás caían desalineados. */
+@media (max-width: 1060px) {
+  .quick-nav__inner { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .quick-nav__label { grid-column: 1 / -1; padding: 20px 0 8px; }
+  .quick-nav__item { border-left: 1px solid rgba(255,255,255,0.14); border-top: 1px solid rgba(255,255,255,0.14); padding: 16px; }
+  .quick-nav__item:nth-of-type(1) { border-left: 0; padding-left: 0; }
+}
+@media (max-width: 640px) {
+  .quick-nav__inner { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .quick-nav__item, .quick-nav__item:nth-of-type(1) { border-left: 0; padding: 16px 12px 16px 0; }
+  .quick-nav__item:nth-of-type(even) { border-left: 1px solid rgba(255,255,255,0.14); padding-left: 16px; }
+  .quick-nav__city { font-size: 20px; }
+}
 
 /* ── Mapa ──────────────────────────────────────────────────────────────── */
 .map-layout { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 32px; align-items: stretch; }
