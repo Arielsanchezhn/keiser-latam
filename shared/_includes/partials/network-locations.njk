@@ -11,6 +11,9 @@
     {%- else %}
     <p class="country-row__meta">{{ country.domain }}{% if country.domainNote %} · {{ country.domainNote | t(locale) }}{% endif %}</p>
     {%- endif %}
+    {%- if country.url and country.locations.length > 1 %}
+    <a class="country-row__compare" href="{{ country.url | t(locale) }}">{{ s.goCountrySite | replace('{country}', country.name | t(locale)) }} {{ arrow() | safe }}</a>
+    {%- endif %}
     {%- if country.compareUrl %}
     <a class="country-row__compare" href="{{ country.compareUrl | t(locale) }}">{{ s.compareCampuses }} {{ arrow() | safe }}</a>
     {%- endif %}

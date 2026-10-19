@@ -47,7 +47,8 @@
     "why3h": "ACBSP en negocios",
     "why4h": "Desde 1977",
     "why4p": "Casi cincuenta años formando profesionales, ahora con presencia en Centroamérica.",
-    "portalDomain": "[dominio del portal]"
+    "portalDomain": "[dominio del portal]",
+    "goCountrySite": "Ir al sitio de {country}"
   },
   "en": {
     "metaTitle": "Keiser University Latin America | Campuses and sites in Central America",
@@ -97,6 +98,7 @@
     "why3h": "ACBSP in business",
     "why4h": "Since 1977",
     "why4p": "Nearly fifty years educating professionals, now with a presence in Central America.",
-    "portalDomain": "[portal domain]"
+    "portalDomain": "[portal domain]",
+    "goCountrySite": "Visit the {country} website"
   }
 }

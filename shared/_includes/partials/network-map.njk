@@ -64,7 +64,9 @@
       <div>
         <p class="map-panel__status">{{ country.summary | t(locale) }}</p>
         <h3 class="map-panel__name" id="map-panel-title-{{ country.id }}">{{ country.name | t(locale) }}</h3>
-        <p class="map-panel__domain">{{ country.domain }}{% if country.domainNote %} · {{ country.domainNote | t(locale) }}{% endif %}</p>
+        <p class="map-panel__domain">
+          {%- if country.url %}<a href="{{ country.url | t(locale) }}">{{ country.domain }}</a>{% else %}{{ country.domain }}{% endif %}
+          {%- if country.domainNote %} · {{ country.domainNote | t(locale) }}{% endif %}</p>
       </div>
       {%- if country.presence == 'academic' %}
       <ul class="map-panel__list">
@@ -81,6 +83,11 @@
         </li>
         {%- endfor %}
       </ul>
+      {#- País con varias ubicaciones (Nicaragua): siempre ofrecer también el
+          sitio del país, además de cada campus. -#}
+      {%- if country.url and country.locations.length > 1 %}
+      <a class="btn btn--primary" href="{{ country.url | t(locale) }}">{{ s.goCountrySite | replace('{country}', country.name | t(locale)) }} {{ arrow() | safe }}</a>
+      {%- endif %}
       {%- else %}
       {%- for locId in country.locations %}
       {%- set loc = network.locations | byId(locId) %}

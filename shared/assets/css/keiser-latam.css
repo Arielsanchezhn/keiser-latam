@@ -279,3 +279,6 @@ a:hover { color: var(--ku-teal-hover); }
 .site-footer__legal { margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.14); font-size: 13px; line-height: 1.6; color: var(--ku-blue-50); display: flex; flex-direction: column; gap: 10px; }
 .site-footer__legal p { margin: 0; }
 .site-footer__legal a { align-self: flex-start; min-height: 32px; display: inline-flex; align-items: center; color: var(--ku-yellow); }
+
+/* Dominio del país en el panel del mapa: enlace al sitio del país. */
+.map-panel__domain a { font-weight: 500; }
