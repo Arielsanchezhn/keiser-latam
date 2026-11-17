@@ -1,0 +1,20 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Keiser University El Salvador//Brunch//ES
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:brunch-24nov-2026@keiseruniversity.edu.sv
+DTSTAMP:20261117T160000Z
+DTSTART:20261124T150000Z
+DTEND:20261124T170000Z
+SUMMARY:The American Connection · Thanksgiving Executive Brunch (Keiser University)
+LOCATION:La Pampa Argentina\, Skydeck nivel 24\, Millennium Plaza\, San Salvador
+DESCRIPTION:Brunch ejecutivo y masterclass de MBA con el Dr. Carlos Converso\, en vivo desde Florida. Consultas: WhatsApp +503 2250 3050.
+BEGIN:VALARM
+TRIGGER:-PT1H
+ACTION:DISPLAY
+DESCRIPTION:Thanksgiving Executive Brunch en 1 hora
+END:VALARM
+END:VEVENT
+END:VCALENDAR
